@@ -136,7 +136,7 @@ x_376096_papro.approval_inject = (function() {
 			}
 
 			approvalInProgress = true;
-			getApprovalComment(action).then(function (comment) {
+			getApprovalComment(action, sys_id).then(function (comment) {
 				var deferred = $q.defer();
 
 				if (requireEsignatureApproval) {
@@ -179,11 +179,23 @@ x_376096_papro.approval_inject = (function() {
 			});
 		}
 	
-		function getApprovalComment(action) {
+		function getApprovalComment(action, sys_id) {
 			var deferred = $q.defer();
 			cache.getConfig().then(function (config) {
 				var isApprove = action == 'approved';
 				var commentRequired = isApprove ? config.approve_comment_mandatory : config.reject_comment_mandatory;
+				
+				var source_table = '';
+				
+				var ga = new $window.GlideAjax('PortalApprovalUtilClient').setScope('x_376096_papro');
+					ga.addParam('sysparm_name', 'getSourceTable');
+					ga.addParam('sys_id', sys_id);
+					ga.getXMLAnswer(function (answer) {
+						source_table = answer;
+						if(source_table == 'x_leoni_oms_request') {
+						commentRequired = true;
+						}
+						
 				if (!commentRequired && !config.always_confirm) {
 					// no comment is required, the confirm popup is not desired
 					deferred.resolve();
@@ -214,6 +226,9 @@ x_376096_papro.approval_inject = (function() {
 						}).then(function () { deferred.resolve(inputOptions.text); }, deferred.reject);
 					});
 				}
+						
+					});
+				
 			}, deferred.reject);
 
 			return deferred.promise;
@@ -225,14 +240,14 @@ x_376096_papro.approval_inject = (function() {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-11-20 10:37:54</sys_created_on>
         <sys_id>8d5fe119975bd110d545b18e6253aff3</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>61</sys_mod_count>
         <sys_name>x_376096_papro.approval_inject</sys_name>
         <sys_package display_value="Portal Approval" source="x_376096_papro">d84e65d5975bd110d545b18e6253af08</sys_package>
         <sys_policy/>
         <sys_scope display_value="Portal Approval">d84e65d5975bd110d545b18e6253af08</sys_scope>
         <sys_update_name>sys_ui_script_8d5fe119975bd110d545b18e6253aff3</sys_update_name>
         <sys_updated_by>seto5001</sys_updated_by>
-        <sys_updated_on>2024-05-07 16:42:51</sys_updated_on>
+        <sys_updated_on>2024-05-07 18:23:17</sys_updated_on>
         <ui_type>1</ui_type>
         <use_scoped_format>true</use_scoped_format>
     </sys_ui_script>
