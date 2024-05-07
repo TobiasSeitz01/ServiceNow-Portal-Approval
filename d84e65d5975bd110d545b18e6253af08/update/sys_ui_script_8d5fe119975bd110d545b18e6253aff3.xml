@@ -16,8 +16,8 @@ x_376096_papro.approval_inject = (function() {
 	
 	var targetWidgets = [
 		// '<Sys ID of Target Widget>', // [widget-id] <Target Widget Name> (<used page>)
-		'f37aa302cb70020000f8d856634c9cfc', // [] Approvals (approvals)
-		'33442352cb30020000f8d856634c9c3f', // [] Approval Info (approval)
+		'29d9734ddb65c698d46e5117f3961921', // [] Approvals (approvals)
+		'b0045a2fdbefa8109edc542af496198e', // [] Approval Info (approval)
 		'0d4be14b87473300926420eac5cb0b6c', // [] CSM Approval Info (csm_approval)
 		'69deca02675003004b8d794717415a9b', // [sc_request_and_approvals] Requests and Approvals (sc_landing)
 	];
@@ -225,14 +225,14 @@ x_376096_papro.approval_inject = (function() {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-11-20 10:37:54</sys_created_on>
         <sys_id>8d5fe119975bd110d545b18e6253aff3</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>x_376096_papro.approval_inject</sys_name>
         <sys_package display_value="Portal Approval" source="x_376096_papro">d84e65d5975bd110d545b18e6253af08</sys_package>
         <sys_policy/>
         <sys_scope display_value="Portal Approval">d84e65d5975bd110d545b18e6253af08</sys_scope>
         <sys_update_name>sys_ui_script_8d5fe119975bd110d545b18e6253aff3</sys_update_name>
-        <sys_updated_by>markus.kraus</sys_updated_by>
-        <sys_updated_on>2024-03-05 13:57:40</sys_updated_on>
+        <sys_updated_by>seto5001</sys_updated_by>
+        <sys_updated_on>2024-05-07 16:42:51</sys_updated_on>
         <ui_type>1</ui_type>
         <use_scoped_format>true</use_scoped_format>
     </sys_ui_script>
